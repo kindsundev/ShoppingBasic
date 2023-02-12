@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MVVMShopping</string>
+    <string name="amount">Amount</string>
+    <string name="cancel">CANCEL</string>
+    <string name="add">ADD</string>
+    <string name="name">Name</string>
+    <string name="add_a_new_shopping_item">Add a new Shopping Item</string>
+    <string name="icon_minus">icon minus</string>
+    <string name="icon_plus">icon plus</string>
+    <string name="icon_delete">icon delete</string>
 </resources>
