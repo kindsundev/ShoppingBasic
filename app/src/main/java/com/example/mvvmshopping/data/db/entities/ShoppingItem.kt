@@ -1,4 +1,4 @@
-package com.example.mvvmshopping
+package com.example.mvvmshopping.data.db.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
