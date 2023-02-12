@@ -3,7 +3,7 @@ package com.example.mvvmshopping.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmshopping.adapter.ShoppingItemAdapter
 import com.example.mvvmshopping.data.db.ShoppingDatabase
@@ -31,7 +31,7 @@ class ShoppingActivity : AppCompatActivity() {
         val database = ShoppingDatabase(this)
         val repository = ShoppingRepository(database)
         val factory = ShoppingViewModelFactory(repository)
-        viewModel = ViewModelProviders.of(this, factory)[ShoppingViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[ShoppingViewModel::class.java]
     }
 
 
