@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmshopping.R
 import com.example.mvvmshopping.data.db.entities.ShoppingItem
-import com.example.mvvmshopping.ui.shoppinglist.ShoppingViewModel
+import com.example.mvvmshopping.ui.ShoppingViewModel
 import kotlinx.android.synthetic.main.shopping_item.view.*
 
 class ShoppingItemAdapter(
