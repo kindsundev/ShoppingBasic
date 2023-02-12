@@ -4,18 +4,20 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
-import com.example.mvvmshopping.R
 import com.example.mvvmshopping.data.db.entities.ShoppingItem
-import kotlinx.android.synthetic.main.dialog_add_shopping_item.*
+import com.example.mvvmshopping.databinding.DialogAddShoppingItemBinding
 
 class AddShoppingItemDialog(
     context: Context,
     val addDialogListener: AddDialogListener
 ) : AppCompatDialog(context) {
 
+    private lateinit var binding: DialogAddShoppingItemBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dialog_add_shopping_item)
+        binding = DialogAddShoppingItemBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initListeners()
     }
 
@@ -25,9 +27,9 @@ class AddShoppingItemDialog(
     }
 
     private fun onClickAdd() {
-        tvAdd.setOnClickListener {
-            val name = etName.text.toString()
-            val amount = etAmount.text.toString()
+        binding.tvAdd.setOnClickListener {
+            val name = binding.etName.text.toString()
+            val amount = binding.etAmount.text.toString()
 
             if (name.isEmpty() or amount.isEmpty()) {
                 Toast.makeText(context, "Please enter all the information!", Toast.LENGTH_SHORT)
@@ -42,7 +44,7 @@ class AddShoppingItemDialog(
     }
 
     private fun onClickCancel() {
-        tvCancel.setOnClickListener {
+        binding.tvCancel.setOnClickListener {
             cancel()
         }
     }

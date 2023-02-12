@@ -5,22 +5,23 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mvvmshopping.R
 import com.example.mvvmshopping.adapter.ShoppingItemAdapter
 import com.example.mvvmshopping.data.db.ShoppingDatabase
 import com.example.mvvmshopping.data.db.entities.ShoppingItem
 import com.example.mvvmshopping.data.repositories.ShoppingRepository
+import com.example.mvvmshopping.databinding.ActivityShoppingBinding
 import com.example.mvvmshopping.ui.dialog.AddDialogListener
 import com.example.mvvmshopping.ui.dialog.AddShoppingItemDialog
-import kotlinx.android.synthetic.main.activity_shopping.*
 
 class ShoppingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityShoppingBinding
     private lateinit var viewModel : ShoppingViewModel
     private lateinit var adapter: ShoppingItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shopping)
+        binding = ActivityShoppingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initViewModel()
         initAdapter()
         initListeners()
@@ -36,8 +37,8 @@ class ShoppingActivity : AppCompatActivity() {
 
     private fun initAdapter() {
         adapter = ShoppingItemAdapter(listOf(), viewModel)
-        rvShoppingItems.layoutManager = LinearLayoutManager(this)
-        rvShoppingItems.adapter = adapter
+        binding.rvShoppingItems.layoutManager = LinearLayoutManager(this)
+        binding.rvShoppingItems.adapter = adapter
 
         viewModel.getAllShoppingItems()
             .observe(this, Observer {
@@ -47,7 +48,7 @@ class ShoppingActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
-        fab.setOnClickListener {
+        binding.fab.setOnClickListener {
             AddShoppingItemDialog(this,
                 object: AddDialogListener {
                     override fun onAddButtonClicked(item: ShoppingItem) {
